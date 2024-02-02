@@ -162,6 +162,24 @@ describe('hanzidecomposer', function() {
   });
 
   it('should decompose correctly', function() {
+    assert.deepEqual(hanzi.decompose('豖').components1, ['豕', '丶']);
+    assert.deepEqual(hanzi.decompose('豖').components2, [
+      '豕',
+      '一',
+      '勹',
+      '㇆',
+      '㇒',
+      '冫',
+      '丶'
+    ]);
+    assert.deepEqual(hanzi.decompose('豖').components3, [
+      '一',
+      '㇆',
+      '㇒',
+      '冫',
+      '丶'
+    ]);
+
     assert.deepEqual(hanzi.decompose('琰').components1, ['王', '炎']);
     assert.deepEqual(hanzi.decompose('琰').components2, [
       '王',
@@ -262,8 +280,6 @@ describe('hanzidecomposer', function() {
 
 describe('decomposeMany', () => {
   it('returns three characters', () => {
-    console.log(hanzi.decompose('弱'));
-
     assert.deepEqual(hanzi.decomposeMany('和挂爱'), {
       和: {
         character: '和',
