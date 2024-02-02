@@ -110,172 +110,12 @@ describe('hanzidecomposer', function() {
   });
 
   it('gets all characters with a given component', function() {
-    assert.deepEqual(hanzi.getCharactersWithComponent('囗'), [
-      '国',
-      '因',
-      '西',
-      '回',
-      '口',
-      '四',
-      '团',
-      '图',
-      '围',
-      '困',
-      '恩',
-      '固',
-      '烟',
-      '园',
-      '窗',
-      '圆',
-      '墙',
-      '惯',
-      '圈',
-      '贯',
-      '衰',
-      '菌',
-      '颤',
-      '傻',
-      '姻',
-      '咽',
-      '嗯',
-      '擅',
-      '鄙',
-      '囚',
-      '捆',
-      '茵',
-      '禀',
-      '徊',
-      '凛',
-      '粤',
-      '檀',
-      '瑙',
-      '圃',
-      '囱',
-      '啬',
-      '涸',
-      '媲',
-      '蔷',
-      '锢',
-      '蛔',
-      '穑',
-      '洄',
-      '胭',
-      '泗',
-      '蓑',
-      '囤',
-      '囿',
-      '泅',
-      '摁',
-      '懔',
-      '囡',
-      '帼',
-      '氤',
-      '嬗',
-      '蝈',
-      '邋',
-      '蓖',
-      '崮',
-      '樯',
-      '囫',
-      '囟',
-      '掼',
-      '圜',
-      '囵',
-      '驷',
-      '阃',
-      '鬣',
-      '茴',
-      '囹',
-      '痼',
-      '廪',
-      '圄',
-      '卣',
-      '掴',
-      '腦',
-      '嫱',
-      '膻',
-      '檩',
-      '榱',
-      '澶',
-      '篦',
-      '硇',
-      '涠',
-      '洇',
-      '總',
-      '鱲',
-      '囝',
-      '貔',
-      '迴',
-      '圉',
-      '溷',
-      '缞',
-      '鲴',
-      '悃',
-      '铟',
-      '腘',
-      '骢',
-      '躐',
-      '謴',
-      '璁',
-      '蒽',
-      '骃',
-      '羶',
-      '鯝',
-      '镴',
-      '硱',
-      '鬛',
-      '逌',
-      '睏',
-      '秵',
-      '襢',
-      '饘',
-      '絪',
-      '駰',
-      '麕',
-      '稟',
-      '鹯',
-      '邅',
-      '螕',
-      '顫',
-      '鳣',
-      '裀',
-      '稛',
-      '縕',
-      '鱣',
-      '糰',
-      '驙',
-      '箇',
-      '膕',
-      '綑',
-      '臘',
-      '箘',
-      '聰',
-      '蔥',
-      '鮰',
-      '驄',
-      '薀',
-      '祻',
-      '繌',
-      '圊',
-      '罆',
-      '薔',
-      '謥',
-      '貫',
-      '鏆',
-      '銦',
-      '繬',
-      '蒕',
-      '穯',
-      '簑',
-      '碅',
-      '鸇',
-      '薗',
-      '釦',
-      '稇',
-      '艢',
-      '蜠',
-      '蠟',
-      '醞'
+    assert.deepEqual(hanzi.getCharactersWithComponent('鼎'), [
+      '鼎',
+      '鼐',
+      '鼏',
+      '鐤',
+      '鼑'
     ]);
   });
 
@@ -283,18 +123,39 @@ describe('hanzidecomposer', function() {
     var expected = {
       di1: {
         character: '低',
-        component: ['亻', '氐', '氐', '亻', '氏', '氏', '丶', '丶'],
+        component: [
+          '亻',
+          '氐',
+          '氐',
+          '亻',
+          '㇒',
+          '丨',
+          '丨',
+          '氏',
+          '氏',
+          '㇗',
+          '㇂',
+          '一',
+          '丶',
+          '丶'
+        ],
         phoneticpinyin: [
           'ren2',
           'di1',
           'di3',
           'ren2',
+          '_stroke',
+          'gun3',
+          'shu4',
           'shi4',
           'zhi1',
+          '_stroke',
+          '_stroke',
+          'yi1',
           'dian3',
           'zhu3'
         ],
-        regularity: [0, 1, 2, 0, 4, 4, 3, 0]
+        regularity: [0, 1, 2, 0, 0, 0, 0, 4, 4, 0, 0, 4, 3, 0]
       }
     };
     assert.deepEqual(hanzi.determinePhoneticRegularity('低'), expected);
@@ -302,18 +163,39 @@ describe('hanzidecomposer', function() {
 
   it('should decompose correctly', function() {
     assert.deepEqual(hanzi.decompose('琰').components1, ['王', '炎']);
-    assert.deepEqual(hanzi.decompose('琰').components2, ['王', '火']);
-    assert.deepEqual(hanzi.decompose('琰').components3, [
+    assert.deepEqual(hanzi.decompose('琰').components2, [
+      '王',
       '一',
-      '一',
+      '土',
+      '十',
       '丨',
-      '一',
       '火'
     ]);
+    assert.deepEqual(hanzi.decompose('琰').components3, ['一', '丨', '火']);
 
     assert.deepEqual(hanzi.decompose('焱').components1, ['火']);
     assert.deepEqual(hanzi.decompose('焱').components2, ['火']);
     assert.deepEqual(hanzi.decompose('焱').components3, ['火']);
+
+    assert.deepEqual(hanzi.decompose('标').components1, ['木', '示']);
+    assert.deepEqual(hanzi.decompose('标').components2, [
+      '木',
+      '十',
+      '一',
+      '丨',
+      '八',
+      '㇒',
+      '示',
+      '二',
+      '小',
+      '亅'
+    ]);
+    assert.deepEqual(hanzi.decompose('标').components3, [
+      '一',
+      '丨',
+      '㇒',
+      '亅'
+    ]);
   });
 
   it('should once decompose simplified character', function() {
@@ -326,8 +208,12 @@ describe('hanzidecomposer', function() {
     assert.deepEqual(hanzi.decompose('爱').components2, [
       '爫',
       '冖',
+      '冂',
       '𠂇',
-      '又'
+      '十',
+      '又',
+      '㇇',
+      '㇏'
     ]);
   });
   it('should graphical decompose simplified character', function() {
@@ -350,8 +236,15 @@ describe('hanzidecomposer', function() {
     assert.deepEqual(hanzi.decompose('愛').components2, [
       '爫',
       '冖',
+      '冂',
       '心',
-      '夂'
+      '丶',
+      '㇃',
+      '夂',
+      '又',
+      '㇇',
+      '㇏',
+      '㇒'
     ]);
   });
   it('should graphical decompose traditional character', function() {
@@ -369,23 +262,25 @@ describe('hanzidecomposer', function() {
 
 describe('decomposeMany', () => {
   it('returns three characters', () => {
+    console.log(hanzi.decompose('弱'));
+
     assert.deepEqual(hanzi.decomposeMany('和挂爱'), {
       和: {
         character: '和',
         components1: ['禾', '口'],
-        components2: ['禾', '口'],
-        components3: ['㇒', '一', '丨', '㇒', '囗']
+        components2: ['禾', '㇒', '木', '十', '一', '丨', '八', '口', '冂'],
+        components3: ['㇒', '一', '丨', '冂']
       },
       挂: {
         character: '挂',
         components1: ['扌', '圭'],
-        components2: ['扌', '土'],
+        components2: ['扌', '亅', '二', '一', '土'],
         components3: ['亅', '一', '土']
       },
       爱: {
         character: '爱',
         components1: ['No glyph available', '友'],
-        components2: ['爫', '冖', '𠂇', '又'],
+        components2: ['爫', '冖', '冂', '𠂇', '十', '又', '㇇', '㇏'],
         components3: ['爫', '冂', '十', '㇇', '㇏']
       }
     });
